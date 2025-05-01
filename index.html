@@ -111,7 +111,71 @@
 </section>
 
 <section id="item-content" class="container mt-4" style="display: none;">
-    <h1>Item Page</h1>
+    <main id="item">
+        <div class="container item-card card col-12 mt-5">
+
+            <div id="item-form">
+                <h3>Item Form</h3>
+                <form>
+                    <div class="mb-3">
+                        <label for="itemIdInput" class="form-label">Item ID</label>
+                        <input type="text" class="form-control" id="itemIdInput" placeholder="Enter item ID">
+                    </div>
+                    <div class="mb-3">
+                        <label for="itemNameInput" class="form-label">Item Name</label>
+                        <input type="text" class="form-control" id="itemNameInput" placeholder="Enter item name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="itemPriceInput" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="itemPriceInput" placeholder="Enter item price" step="0.01">
+                    </div>
+                    <div class="mb-3">
+                        <label for="itemQuantityInput" class="form-label">Quantity</label>
+                        <input type="number" class="form-control" id="itemQuantityInput" placeholder="Enter quantity">
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="item-table" class="mt-4">
+                <h3>Item Table</h3>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">Item ID</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row"> </th>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> </th>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> </th>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </main>
 </section>
 
 <section id="order-content" class="container mt-4" style="display: none;">
