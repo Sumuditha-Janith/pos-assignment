@@ -1,33 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>SuperDuperMart</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"></link>
-    <link rel="stylesheet" href="assets/lib/normalize.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
-
 <body>
 
-<ul class="nav justify-content-center">
-    <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Customer</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Item</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" aria-disabled="true">Orders</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" aria-disabled="true">Order Details</a>
-    </li>
-</ul>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" id="home-nav">SuperDuperMart</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a id="customer-nav" class="nav-link" href="#">Customer</a>
+                </li>
+                <li class="nav-item">
+                    <a id="item-nav" class="nav-link" href="#">Item</a>
+                </li>
+                <li class="nav-item">
+                    <a id="order-nav" class="nav-link" href="#">Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a id="order-history-nav" class="nav-link" href="#">Order Details</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Pages -->
+<section id="Dashboard-content" class="container mt-4">
+    <h1>Dashboard</h1>
+
+</section>
+
+<section id="customer-content" class="container mt-4" style="display: none;">
+    <h1>Customer Page</h1>
+
+</section>
+
+<section id="item-content" class="container mt-4" style="display: none;">
+    <h1>Item Page</h1>
+</section>
+
+<section id="order-content" class="container mt-4" style="display: none;">
+    <h1>Order Page</h1>
+</section>
+
+<section id="OrderHistory-content" class="container mt-4" style="display: none;">
+    <h1>Order History Page</h1>
+</section>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/lib/jquery-3.7.1.min.js"></script>
+
+<script>
+    $("#Dashboard-content").show();
+    $("#customer-content, #item-content, #order-content, #OrderHistory-content").hide();
+
+    $("#home-nav").on("click", function () {
+        $("#Dashboard-content").show();
+        $("#customer-content, #item-content, #order-content, #OrderHistory-content").hide();
+    });
+
+    $("#customer-nav").on("click", function () {
+        $("#customer-content").show();
+        $("#Dashboard-content, #item-content, #order-content, #OrderHistory-content").hide();
+    });
+
+    $("#item-nav").on("click", function () {
+        $("#item-content").show();
+        $("#Dashboard-content, #customer-content, #order-content, #OrderHistory-content").hide();
+    });
+
+    $("#order-nav").on("click", function () {
+        $("#order-content").show();
+        $("#Dashboard-content, #customer-content, #item-content, #OrderHistory-content").hide();
+    });
+
+    $("#Ohistory-nav").on("click", function () {
+        $("#OrderHistory-content").show();
+        $("#Dashboard-content, #customer-content, #item-content, #order-content").hide();
+    });
+</script>
 
 </body>
 </html>
