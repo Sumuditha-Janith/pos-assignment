@@ -36,15 +36,78 @@
     </div>
 </nav>
 
-<!-- Pages -->
+<!-- Dashboard -->
 <section id="Dashboard-content" class="container mt-4">
-    <h1>Dashboard</h1>
-
+    <h2>Dashboard</h2>
 </section>
 
+<!-- Customer -->
 <section id="customer-content" class="container mt-4" style="display: none;">
-    <h1>Customer Page</h1>
+    <main id="customer">
+        <div class="container customer-card card col-12 mt-5">
 
+            <div id="customer-form">
+                <h3>Customer Form</h3>
+                <form>
+                    <div class="mb-3">
+                        <label for="idInput" class="form-label">ID</label>
+                        <input type="text" class="form-control" id="idInput" placeholder="Enter your ID">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nameInput" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="nameInput" placeholder="Enter your name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="emailInput" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="addressTextarea" class="form-label">Address</label>
+                        <textarea class="form-control" id="addressTextarea" rows="3" placeholder="Enter your address"></textarea>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="customer-table" class="mt-4">
+                <h3>Customer Table</h3>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">Customer ID</th>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Customer Address</th>
+                        <th scope="col">Customer Email</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row"> </th>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> </th>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> </th>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </main>
 </section>
 
 <section id="item-content" class="container mt-4" style="display: none;">
@@ -87,7 +150,7 @@
         $("#Dashboard-content, #customer-content, #item-content, #OrderHistory-content").hide();
     });
 
-    $("#Ohistory-nav").on("click", function () {
+    $("#order-history-nav").on("click", function () {
         $("#OrderHistory-content").show();
         $("#Dashboard-content, #customer-content, #item-content, #order-content").hide();
     });
