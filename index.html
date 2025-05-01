@@ -123,12 +123,11 @@
                         <input type="text" class="form-control" id="itemIdInput" placeholder="Enter item ID">
                     </div>
                     <div class="mb-3">
-                        <label for="itemNameInput" class="form-label">Item Name</label>
+                        <label for="itemNameInputItem" class="form-label">Item Name</label>
                         <input type="text" class="form-control" id="itemNameInputItem" placeholder="Enter item name">
-
                     </div>
                     <div class="mb-3">
-                        <label for="itemPriceInput" class="form-label">Price</label>
+                        <label for="itemPriceInputItem" class="form-label">Price</label>
                         <input type="number" class="form-control" id="itemPriceInputItem" placeholder="Enter item price" step="0.01">
                     </div>
                     <div class="mb-3">
@@ -302,7 +301,138 @@
 </section>
 
 <section id="OrderHistory-content" class="container mt-4" style="display: none;">
-    <h1>Order History Page</h1>
+    <div class="container order-history-card card col-12 mt-5">
+        <h2>Order History</h2>
+
+        <!-- Search and Filter Section -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search orders..." id="orderSearchInput">
+                    <button class="btn btn-outline-secondary" type="button">Search</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <label class="input-group-text" for="orderFilterSelect">Filter by</label>
+                    <select class="form-select" id="orderFilterSelect">
+                        <option selected value="all">All Orders</option>
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order History Table -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                    <th>Total Amount</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>ORD-1001</td>
+                    <td>John Doe</td>
+                    <td>2023-10-15</td>
+                    <td>$125.99</td>
+                    <td><span class="badge bg-success">Completed</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-primary view-details-btn">View Details</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ORD-1002</td>
+                    <td>Jane Smith</td>
+                    <td>2023-10-14</td>
+                    <td>$89.50</td>
+                    <td><span class="badge bg-success">Completed</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-primary view-details-btn">View Details</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ORD-1003</td>
+                    <td>Robert Johnson</td>
+                    <td>2023-10-12</td>
+                    <td>$210.75</td>
+                    <td><span class="badge bg-warning text-dark">Processing</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-primary view-details-btn">View Details</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Order Details Modal -->
+        <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Order Details - <span id="modalOrderId">ORD-1001</span></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <p><strong>Customer:</strong> <span id="modalCustomerName">John Doe</span></p>
+                                <p><strong>Date:</strong> <span id="modalOrderDate">2023-10-15</span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Status:</strong> <span id="modalOrderStatus" class="badge bg-success">Completed</span></p>
+                                <p><strong>Total Amount:</strong> $<span id="modalTotalAmount">125.99</span></p>
+                            </div>
+                        </div>
+
+                        <h6>Order Items</h6>
+                        <table class="table table-sm">
+                            <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Subtotal</th>
+                            </tr>
+                            </thead>
+                            <tbody id="modalOrderItems">
+                            <tr>
+                                <td>Premium Coffee (500g)</td>
+                                <td>$12.99</td>
+                                <td>2</td>
+                                <td>$25.98</td>
+                            </tr>
+                            <tr>
+                                <td>Organic Tea (100g)</td>
+                                <td>$8.50</td>
+                                <td>3</td>
+                                <td>$25.50</td>
+                            </tr>
+                            <tr>
+                                <td>Chocolate Bar</td>
+                                <td>$3.25</td>
+                                <td>4</td>
+                                <td>$13.00</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Print Receipt</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- Scripts -->
@@ -336,6 +466,19 @@
     $("#order-history-nav").on("click", function () {
         $("#OrderHistory-content").show();
         $("#Dashboard-content, #customer-content, #item-content, #order-content").hide();
+    });
+
+    // Order details modal functionality
+    $(document).ready(function() {
+        $('.view-details-btn').click(function() {
+            // In a real app, you would fetch the order details based on the clicked row
+            var orderId = $(this).closest('tr').find('td:first').text();
+            $('#modalOrderId').text(orderId);
+
+            // Show the modal
+            var orderDetailsModal = new bootstrap.Modal(document.getElementById('orderDetailsModal'));
+            orderDetailsModal.show();
+        });
     });
 </script>
 
