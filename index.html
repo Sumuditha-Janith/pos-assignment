@@ -110,6 +110,7 @@
     </main>
 </section>
 
+<!-- Item -->
 <section id="item-content" class="container mt-4" style="display: none;">
     <main id="item">
         <div class="container item-card card col-12 mt-5">
@@ -179,7 +180,124 @@
 </section>
 
 <section id="order-content" class="container mt-4" style="display: none;">
-    <h1>Order Page</h1>
+    <main id="order">
+        <div class="container order-card card col-12 mt-5">
+            <div id="order-form">
+                <h3>Order Form</h3>
+                <form>
+                    <!-- Row 1: Order ID -->
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="orderIdInput" class="form-label">Order ID</label>
+                            <input type="text" class="form-control" id="orderIdInput" placeholder="Enter order ID">
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Customer Selection -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="customerIdSelect" class="form-label">Customer ID</label>
+                            <select class="form-select" id="customerIdSelect">
+                                <option selected disabled>Select customer</option>
+                                <option value="1">C001</option>
+                                <option value="2">C002</option>
+                                <option value="3">C003</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="customerNameInput" class="form-label">Customer Name</label>
+                            <input type="text" class="form-control" id="customerNameInput" placeholder="Customer name" readonly>
+                        </div>
+                    </div>
+
+                    <!-- Row 3: Item Selection -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="itemIdSelect" class="form-label">Item ID</label>
+                            <select class="form-select" id="itemIdSelect">
+                                <option selected disabled>Select item</option>
+                                <option value="1">I001</option>
+                                <option value="2">I002</option>
+                                <option value="3">I003</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="itemNameInput" class="form-label">Item Name</label>
+                            <input type="text" class="form-control" id="itemNameInput" placeholder="Item name" readonly>
+                        </div>
+                    </div>
+
+                    <!-- Row 4: Amount and Price -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="itemAmountInput" class="form-label">Amount</label>
+                            <input type="number" class="form-control" id="itemAmountInput" placeholder="Calculated amount" readonly step="0.01">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="itemPriceInput" class="form-label">Price</label>
+                            <input type="number" class="form-control" id="itemPriceInput" placeholder="Item price" readonly step="0.01">
+                        </div>
+                    </div>
+
+                    <!-- Row 5: Quantity and Add to Cart -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="orderQuantityInput" class="form-label">Quantity</label>
+                            <input type="number" class="form-control" id="orderQuantityInput" placeholder="Enter quantity" min="1">
+                        </div>
+                        <div class="col-md-6 d-flex align-items-end">
+                            <button type="button" class="btn btn-primary w-100">Add to Cart</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div id="order-table" class="mt-4">
+                <h3>Order Items</h3>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">Item ID</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button class="btn btn-danger btn-sm">Remove</button></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button class="btn btn-danger btn-sm">Remove</button></td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-end"><strong>Total:</strong></td>
+                        <td><strong>0.00</strong></td>
+                        <td></td>
+                    </tr>
+                    </tfoot>
+                </table>
+                <div class="d-flex justify-content-end gap-2">
+                    <button type="button" class="btn btn-success">Place Order</button>
+                    <button type="button" class="btn btn-secondary">Clear All</button>
+                </div>
+            </div>
+        </div>
+    </main>
 </section>
 
 <section id="OrderHistory-content" class="container mt-4" style="display: none;">
