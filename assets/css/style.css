@@ -1,0 +1,21 @@
+.error-message {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 0.25rem;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+body {
+    background-color: honeydew;
+}
+
+.navbar {
+    background-color: honeydew !important;
+}
+
+/*.card {*/
+/*    background-color: ghostwhite;*/
+/*}*/
