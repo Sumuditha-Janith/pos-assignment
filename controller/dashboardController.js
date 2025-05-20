@@ -7,6 +7,6 @@ export function updateDashboard() {
 
     $("#total-orders").text(order_db.length);
 
-    let totalRevenue = order_db.reduce((acc, order) => acc + order.total, 0);
+    let totalRevenue = order_db.reduce((acc, order) => acc + order.totalAmount, 0);
     $("#total-revenue").text(totalRevenue.toFixed(2));
 }
