@@ -18,7 +18,6 @@ function nextOrderId() {
     return "ORD" + formattedNumber;
 }
 
-
 function clearForm() {
     $('#order-id').val(nextOrderId());
     $('#cash').val('');
@@ -26,12 +25,33 @@ function clearForm() {
     $('#balance').val('');
     $('#order-qty').val('');
     $('#item-price').val('');
+    $('#available-qty').val('');
+    $('#discounted-price').val('');
     $('#item-dropdown').prop('selectedIndex', 0);
     $('#customer-dropdown').prop('selectedIndex', 0);
 }
 
+$('#item-dropdown').change(function() {
+    updateAvailableQuantity();
+});
+
+function updateAvailableQuantity() {
+    let itemId = $('#item-dropdown').val();
+    if (itemId) {
+        let selectedItem = item_db.find(item => item.itemId === itemId);
+        if (selectedItem) {
+            $('#available-qty').val(selectedItem.qty);
+        } else {
+            $('#available-qty').val('');
+        }
+    } else {
+        $('#available-qty').val('');
+    }
+}
+
 $('#cash, #discount').on('input', function () {
     updateBalance();
+    updateDiscountedPrice();
 });
 
 function updateBalance() {
@@ -54,6 +74,19 @@ function updateBalance() {
     let balance = cash - finalAmount;
 
     $('#balance').val(balance.toFixed(2));
+}
+
+function updateDiscountedPrice() {
+    let total = Number($('#item-price').val());
+    let discount = Number($('#discount').val());
+
+    if (isNaN(total)) total = 0;
+    if (isNaN(discount)) discount = 0;
+
+    let discountAmount = total * discount / 100;
+    let finalAmount = total - discountAmount;
+
+    $('#discounted-price').val(finalAmount.toFixed(2));
 }
 
 $('#add-cart').click(function () {
@@ -129,6 +162,10 @@ $('#add-cart').click(function () {
     if (isNaN(currentTotal)) currentTotal = 0;
     $('#item-price').val((currentTotal + itemTotal).toFixed(2));
 
+    if (selectedItem) {
+        $('#available-qty').val(selectedItem.qty - qty);
+    }
+
     Swal.fire({
         icon: 'success',
         title: 'Added to Cart',
@@ -136,9 +173,11 @@ $('#add-cart').click(function () {
     });
 
     $('#order-qty').val('');
+    $('#available-qty').val('');
     $('#item-dropdown').prop('selectedIndex', 0);
 
     updateBalance();
+    updateDiscountedPrice();
     loadItems();
 });
 
@@ -157,7 +196,16 @@ $('#order-tbody').on('click', '.remove-btn', function () {
 
             row.remove();
 
+            let currentItemId = $('#item-dropdown').val();
+            if (currentItemId) {
+                let selectedItem = item_db.find(item => item.itemId === currentItemId);
+                if (selectedItem) {
+                    $('#available-qty').val(selectedItem.qty);
+                }
+            }
+
             updateBalance();
+            updateDiscountedPrice();
             loadItems();
             break;
         }
@@ -221,10 +269,16 @@ $('#process-btn').click(function () {
         confirmButtonText: 'Okay',
     }).then((result) => {
         if (result.isConfirmed) {
+
+            $('#discount').val('');
+            $('#discounted-price').val('');
+            $('#cash').val('');
+            $('#balance').val('');
+
             updateDashboard();
+            clearForm();
         }
     });
-
 
     $('#history-tbody').append(`
         <tr>

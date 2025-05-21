@@ -30,10 +30,10 @@ export function loadCustomer() {
     customer_db.map((item) => {
         let data = `<tr>
             <td>${item.cusId}</td>
-            <td>${item.cusName}</td>-
-            <td>${item.email}</td>
+            <td>${item.cusName}</td>
+            <td>${item.address}</td>
             <td>${item.contact}</td>
-            <td>${item.address}</td>         
+            <td>${item.email}</td>         
         </tr>`;
         $("#customer-tbody").append(data);
     });
@@ -48,13 +48,12 @@ function nextId() {
     return "CUS" + formatted;
 }
 
-
 export function clear() {
     $("#cusId").val(nextId());
     $('#cusName').val('');
-    $('#email').val('');
-    $('#contact').val('');
     $('#address').val('');
+    $('#contact').val('');
+    $('#email').val('');
 }
 
 function loadCustomerIds() {
@@ -78,9 +77,9 @@ function loadCustomerIds() {
 $("#customer-save").click(function () {
     let cusId = nextId();
     let cusName = $("#cusName").val()
-    let email = $("#email").val();
-    let contact = $("#contact").val()
     let address = $("#address").val()
+    let contact = $("#contact").val()
+    let email = $("#email").val();
 
     if (!contactPattern.test(contact)) {
         Swal.fire({
@@ -154,9 +153,9 @@ $('#customer-reset').on('click', function () {
 $('#customer-delete').on('click', function () {
     let cusId = $('#cusId').val()
     let cusName = $('#cusName').val()
-    let email = $('#email').val();
-    let contact = $('#contact').val()
     let address = $('#address').val()
+    let contact = $('#contact').val()
+    let email = $('#email').val()
 
     if (cusName === '' || email === '' || contact === '' || address === '') {
         Swal.fire({
@@ -176,25 +175,22 @@ $('#customer-delete').on('click', function () {
         showCancelButton: true,
         confirmButtonText: 'Yes, delete it!'
     }).then(result => {
-
         if (result.isConfirmed) {
             customer_db.splice(index, 1);
             loadCustomer();
             updateDashboard();
             clear();
             loadCustomerIds()
-
         }
     });
-
 });
 
 $('#customer-update').on('click', function () {
     let cusId = $('#cusId').val()
     let cusName = $('#cusName').val();
-    let email = $('#email').val();
+    let address = $('#address').val()
     let contact = $('#contact').val();
-    let address = $('#address').val();
+    let email = $('#email').val();
 
     if (!contactPattern.test(contact)) {
         Swal.fire({
@@ -266,7 +262,7 @@ $("#customer-tbody").on('click', 'tr', function () {
 
     $('#cusId').val(customer.cusId);
     $('#cusName').val(customer.cusName);
-    $('#email').val(customer.email);
-    $('#contact').val(customer.contact);
     $('#address').val(customer.address);
+    $('#contact').val(customer.contact);
+    $('#email').val(customer.email);
 });

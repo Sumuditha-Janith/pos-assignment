@@ -14,6 +14,23 @@ body {
     font-family: 'Inter', 'Roboto', Arial, sans-serif;
     background-color: var(--light-color);
     color: var(--dark-color);
+    background-image: url('../images/supermarket.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.75);
+    z-index: -1;
 }
 
 .navbar {
@@ -35,6 +52,9 @@ h1, h2, h3, h4, h5, h6 {
 
 h2 {
     color: var(--primary-color) !important;
+    text-shadow:
+            1px 1px 2px rgba(0, 0, 0, 0.3),   /* Dark shadow for depth */
+            0 0 4px rgba(188, 188, 188, 0.9);  /* White glow for contrast */
 }
 
 p, input, button, select, table {
@@ -89,9 +109,11 @@ p, input, button, select, table {
 
 .card {
     transition: transform 0.1s ease, box-shadow 0.1s ease;
+    background-color: snow !important;
 }
 
 .card:hover {
     transform: translateY(-1px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    background-color: ghostwhite !important;
 }

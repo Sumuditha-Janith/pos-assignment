@@ -100,7 +100,6 @@
             <h2 class="fw-bold">Manage Customers</h2>
         </div>
 
-        <!-- Customer Form moved above the table -->
         <div class="card border-0 shadow-lg p-4 mb-4">
             <h4 class="mb-4 text-dark">Customer Form</h4>
             <form class="row g-3">
@@ -110,14 +109,14 @@
                 <div class="col-md-6">
                     <input type="text" class="form-control" placeholder="Customer Name" id="cusName">
                 </div>
-                <div class="col-md-6">
-                    <input type="email" class="form-control" placeholder="Email" id="email">
+                <div class="col-md-12">
+                    <input type="text" class="form-control" placeholder="Address" id="address">
                 </div>
                 <div class="col-md-6">
                     <input type="text" class="form-control" placeholder="Contact" id="contact">
                 </div>
-                <div class="col-md-12">
-                    <input type="text" class="form-control" placeholder="Address" id="address">
+                <div class="col-md-6">
+                    <input type="email" class="form-control" placeholder="Email" id="email">
                 </div>
                 <div class="col-12">
                     <div class="d-flex justify-content-end gap-2 flex-wrap flex-md-nowrap">
@@ -130,7 +129,6 @@
             </form>
         </div>
 
-        <!-- Customer Table -->
         <div class="card border-0 shadow-lg p-3">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h5 class="text-dark mb-0">Customer List</h5>
@@ -142,9 +140,9 @@
                     <tr>
                         <th>Customer ID</th>
                         <th>Customer Name</th>
-                        <th>Email</th>
-                        <th>Contact</th>
                         <th>Address</th>
+                        <th>Contact</th>
+                        <th>Email</th>
                     </tr>
                     </thead>
                     <tbody id="customer-tbody">
@@ -161,7 +159,6 @@
             <h2 class="fw-bold">Manage Items</h2>
         </div>
 
-        <!-- Item Form moved above the table -->
         <div class="card border-0 shadow-lg p-4 mb-4">
             <h4 class="mb-4 text-dark">Item Form</h4>
             <form class="row g-3">
@@ -188,7 +185,6 @@
             </form>
         </div>
 
-        <!-- Item Table -->
         <div class="card border-0 shadow-lg p-3">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h5 class="text-dark mb-0">Items List</h5>
@@ -218,7 +214,6 @@
             <h2 class="fw-bold ">Manage Orders</h2>
         </div>
 
-        <!-- Order and Payment cards moved above the customer table -->
         <div class="row g-4 mb-4">
             <div class="col-md-6">
                 <div class="card shadow-sm h-100 d-flex flex-column">
@@ -239,6 +234,12 @@
                                 <select class="form-select" id="item-dropdown">
                                     <option selected disabled>Select Item</option>
                                 </select>
+                            </div>
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <span class="input-group-text">Available Qty</span>
+                                    <input type="number" class="form-control" id="available-qty" readonly>
+                                </div>
                             </div>
                             <div class="col-12">
                                 <input type="number" class="form-control" placeholder="Buy Quantity" id="order-qty">
@@ -272,6 +273,12 @@
                             </div>
                             <div class="col-12">
                                 <div class="input-group">
+                                    <span class="input-group-text">Discounted Price (LKR)</span>
+                                    <input type="number" class="form-control" id="discounted-price" readonly>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="input-group">
                                     <span class="input-group-text">Cash (LKR)</span>
                                     <input type="number" class="form-control" placeholder="0.00" id="cash">
                                 </div>
@@ -291,7 +298,6 @@
             </div>
         </div>
 
-        <!-- Cart Table -->
         <div class="row">
             <div class="col-12">
                 <div class="card shadow-sm h-100 d-flex flex-column">
