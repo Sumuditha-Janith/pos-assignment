@@ -7,7 +7,7 @@
     --light-color: #F8F9FA;
     --dark-color: #343A40;
     --accent-color: #F77F00;
-    --highlight-color: #FFD60A;
+    --highlight-color: #ffef09;
 }
 
 body {
@@ -53,8 +53,8 @@ h1, h2, h3, h4, h5, h6 {
 h2 {
     color: var(--primary-color) !important;
     text-shadow:
-            1px 1px 2px rgba(0, 0, 0, 0.3),   /* Dark shadow for depth */
-            0 0 4px rgba(188, 188, 188, 0.9);  /* White glow for contrast */
+            1px 1px 2px rgba(0, 0, 0, 0.3),
+            0 0 4px rgba(188, 188, 188, 0.9);
 }
 
 p, input, button, select, table {
